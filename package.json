@@ -1,0 +1,89 @@
+{
+  "name": "Postme",
+  "version": "1.0.0",
+  "main": "electron/main.js",
+  "homepage": "https://github.com/bennetty74/postme",
+  "author": {
+    "name": "bennetty74",
+    "email": "bennetty74@gmail.com"
+  },
+  "scripts": {
+    "dev": "vite",
+    "dev:electron": "NODE_ENV=dev electron .",
+    "build": "vite build && electron-builder --mac --win --linux",
+    "build:electron": "electron-builder",
+    "build:mac": "npm run build:mac:x64 && npm run build:mac:arm64",
+    "build:mac:x64": "electron-builder --mac --x64",
+    "build:mac:arm64": "electron-builder --mac --arm64",
+    "build:mac:universal": "electron-builder --mac --universal",
+    "build:win": "electron-builder --win",
+    "build:linux:x64": "electron-builder --linux --x64",
+    "build:linux:arm64": "electron-builder --linux --arm64",
+    "build:linux:universal": "electron-builder --linux --universal",
+    "build:linux": "electron-builder --linux --x64 && electron-builder --linux --arm64"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "description": "",
+  "dependencies": {
+    "@dnd-kit/core": "^6.3.1",
+    "@dnd-kit/sortable": "^10.0.0",
+    "@electron/remote": "^2.1.2",
+    "ace-builds": "^1.39.0",
+    "framer-motion": "^12.5.0",
+    "lottie-react": "^2.4.1",
+    "node-fetch": "^2.7.0",
+    "react": "^18.3.1",
+    "react-ace": "^14.0.1",
+    "react-beautiful-dnd": "^13.1.1",
+    "react-dom": "^18.3.1",
+    "react-icons": "^5.5.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "electron": "^20.0.0",
+    "electron-builder": "^25.1.8",
+    "electron-icon-maker": "^0.0.5",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17",
+    "vite": "^5.4.9"
+  },
+  "build": {
+    "appId": "com.roloo.postme",
+    "productName": "Postme",
+    "files": [
+      "dist/**/*",
+      "electron/**/*"
+    ],
+    "directories": {
+      "buildResources": "build",
+      "output": "release"
+    },
+    "mac": {
+      "icon": "build/icons/mac/icon.icns",
+      "target": "dmg",
+      "artifactName": "${productName}-${version}-${arch}.${ext}"
+    },
+    "win": {
+      "icon": "build/icons/win/icon.ico",
+      "target": "nsis",
+      "artifactName": "${productName}-${version}-${arch}.${ext}"
+    },
+    "linux": {
+      "icon": "build/icons/png/512x512.png",
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Utility",
+      "artifactName": "${productName}-${version}-${arch}.${ext}",
+      "desktop": {
+        "Name": "Postme",
+        "Icon": "build/icons/png",
+        "Type": "Application",
+        "Categories": "Utility"
+      }
+    }
+  }
+}
