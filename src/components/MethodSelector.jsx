@@ -23,7 +23,7 @@ const MethodSelector = ({ method, setMethod }) => {
     <div ref={dropdownRef} className="relative w-20"> {/* Increased width */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="p-2 bg-melad-200 text-melad-700 rounded-md focus:outline-none w-full text-left"
+        className="p-2 bg-melad-100 border border-melad-200 text-melad-700 rounded-md focus:outline-none w-full text-left"
       >
         {method}
       </motion.button>
@@ -33,7 +33,7 @@ const MethodSelector = ({ method, setMethod }) => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.2 }}
-          className="absolute top-full mt-1 w-full bg-melad-200 border border-melad-300 rounded-md shadow-lg z-10"
+          className="absolute top-full mt-1 w-full bg-melad-100 border border-melad-300 rounded-md shadow-lg z-10"
         >
           {methods.map((m) => (
             <div
@@ -42,7 +42,7 @@ const MethodSelector = ({ method, setMethod }) => {
                 setMethod(m);
                 setIsOpen(false);
               }}
-              className="p-2 text-melad-700 hover:bg-melad-300 cursor-pointer"
+              className="p-2 text-melad-700 hover:bg-melad-300 hover:text-gray-100 cursor-pointer"
             >
               {m}
             </div>

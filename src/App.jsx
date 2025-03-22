@@ -7,7 +7,7 @@ import TitleBar from "./components/TitleBar";
 import WelcomePanel from "./components/WelcomePanel"; // Import the new component
 import UrlInput from "./components/UrlInput";
 import MethodSelector from "./components/MethodSelector";
-import { head } from "framer-motion/client";
+import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 
 function App() {
   const [response, setResponse] = useState("");
@@ -135,6 +135,46 @@ function App() {
     await window.electronAPI.saveHistory(newHistory);
   };
 
+
+  const handleSend1 = async () => {
+    const requestData = {
+      method,
+      url,
+      headers: headers
+        .filter((h) => h.key && h.value)
+        .reduce((acc, h) => ({ ...acc, [h.key]: h.value }), {}),
+      body: method !== "GET" && body ? body : undefined,
+    };
+    console.log("send", requestData);
+  
+    setIsSending(true); // 开始发送，触发动画
+  
+    try {
+      // 模拟发送请求并返回 SOAP 响应
+      const mockResponse = await new Promise((resolve) => {
+        setTimeout(() => {
+          const soapResponse = `<?xml version="1.0" encoding="UTF-8"?><soap:Envelope 
+      xmlns:soap="http://www.w3.org/2003/05/soap-envelope" 
+      xmlns:ns="http://example.com/user-service">
+      <soap:Body> <ns:GetUserDetailsResponse> <ns:User><ns:UserId>12345</ns:UserId><ns:FirstName>John</ns:FirstName><ns:LastName>Doe</ns:LastName>
+                  <ns:Email>john.doe@example.com</ns:Email></ns:User></ns:GetUserDetailsResponse><ns:GetUserDetailsResponse> <ns:User><ns:UserId>12345</ns:UserId><ns:FirstName>John</ns:FirstName><ns:LastName>Doe</ns:LastName>
+                  <ns:Email>john.doe@example.com</ns:Email></ns:User></ns:GetUserDetailsResponse><ns:GetUserDetailsResponse> <ns:User><ns:UserId>12345</ns:UserId><ns:FirstName>John</ns:FirstName><ns:LastName>Doe</ns:LastName>
+                  <ns:Email>john.doe@example.com</ns:Email></ns:User></ns:GetUserDetailsResponse><ns:GetUserDetailsResponse> <ns:User><ns:UserId>12345</ns:UserId><ns:FirstName>John</ns:FirstName><ns:LastName>Doe</ns:LastName>
+                  <ns:Email>john.doe@example.com</ns:Email></ns:User></ns:GetUserDetailsResponse></soap:Body></soap:Envelope>`;
+          resolve({ data: soapResponse }); // 模拟返回的数据结构
+          setResponse(soapResponse);
+        }, 1000); // 模拟 1 秒的延迟
+      });
+  
+      // 调用 onSendRequest（假设它处理返回的数据）
+      // await onSendRequest({ ...requestData, response: mockResponse.data });
+    } catch (error) {
+      console.error("Mock request failed:", error);
+    } finally {
+      setIsSending(false); // 请求完成，结束动画
+    }
+  };
+
   const handleSend = async () => {
     const requestData = {
       method,
@@ -175,10 +215,10 @@ function App() {
       <motion.button
         whileHover={{ scale: 1.2 }}
         onClick={() => setIsCollapsed(!isCollapsed)}
-        className="rounded-full shadow-lg w-8 h-8 absolute bottom-2 left-2 text-melad-500 hover:text-melad-700 z-50"
+        className="rounded-full shadow-lg w-8 h-8 absolute bottom-2 left-2 text-melad-500 hover:text-melad-700 z-50 flex items-center justify-center"
         style={{ WebkitAppRegion: "no-drag" }}
       >
-        {isCollapsed ? "▶" : "◀"}
+        {isCollapsed ? <FaChevronRight /> : <FaChevronLeft />}
       </motion.button>
       <div className="flex-1 flex p-2 space-x-6 overflow-hidden relative">
         <HistoryPanel

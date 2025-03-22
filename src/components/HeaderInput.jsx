@@ -24,7 +24,7 @@ const HeaderInput = ({
         value={header.key}
         onChange={(e) => updateHeader(index, "key", e.target.value)}
         placeholder="Key"
-        className="w-full p-2 bg-melad-200 text-melad-700 rounded-md focus:outline-none"
+        className="w-full p-2 bg-melad-100 border border-melad-200 text-melad-700 rounded-md focus:outline-none"
       />
       {header.showSuggestions && getKeySuggestions(header.key).length > 0 && (
         <div className="absolute top-full mt-1 w-full bg-melad-100 border border-melad-300 rounded-md shadow-lg p-1 z-10">
@@ -48,7 +48,7 @@ const HeaderInput = ({
         value={header.value}
         onChange={(e) => updateHeader(index, "value", e.target.value)}
         placeholder="Value"
-        className="w-full p-2 bg-melad-200 text-melad-700 rounded-md focus:outline-none"
+        className="w-full p-2 bg-melad-100 border border-melad-200 text-melad-700 rounded-md focus:outline-none"
       />
       {header.showValueSuggestions && getValueSuggestions(header.key, header.value).length > 0 && (
         <div className="absolute top-full mt-1 w-full bg-melad-100 border border-melad-300 rounded-md shadow-lg p-1 z-10">

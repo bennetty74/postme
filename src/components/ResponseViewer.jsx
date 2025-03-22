@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import AceEditor from "react-ace";
+import xmlFormat from "xml-formatter";
 
 // 导入所需的模式和主题
 import "ace-builds/src-noconflict/mode-json";
@@ -26,7 +27,7 @@ const ResponseViewer = ({ response }) => {
     return "text"; // 默认纯文本
   };
 
-  // 美化响应内容（可选）
+  // 美化响应内容
   const formatResponse = () => {
     if (!response || !response.trim()) return response || "";
     const mode = detectMode();
@@ -36,8 +37,18 @@ const ResponseViewer = ({ response }) => {
       } catch {
         return response; // 解析失败，返回原始内容
       }
+    } else if (mode === "xml") {
+      try {
+        return xmlFormat(response, {
+          indentation: "  ", // 缩进 2 个空格
+          collapseContent: true, // 合并单行内容
+          lineSeparator: "\n", // 使用换行符
+        });
+      } catch {
+        return response; // 格式化失败，返回原始内容
+      }
     }
-    return response; // XML 或文本保持不变
+    return response; // 文本保持不变
   };
 
   // 初始化编辑器为只读模式

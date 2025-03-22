@@ -5,3 +5,18 @@
 body {
   @apply bg-melad-100 text-melad-700;
 }
+
+/* 隐藏垂直和水平滚动条 */
+.ace_scrollbar {
+  display: none !important;
+}
+
+/* 如果只想隐藏垂直滚动条 */
+.ace_scrollbar-v {
+  display: none !important;
+}
+
+/* 如果只想隐藏水平滚动条 */
+.ace_scrollbar-h {
+  display: none !important;
+}

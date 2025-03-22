@@ -1,7 +1,5 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { motion } from "framer-motion";
-import MethodSelector from "./MethodSelector";
-import UrlInput from "./UrlInput";
 import HeaderEditor from "./HeaderEditor";
 import BodyEditor from "./BodyEditor";
 
@@ -15,9 +13,6 @@ const commonHeaders = {
 };
 
 const RequestForm = ({ onSendRequest, onSaveRequest, initialData, method, setMethod, url, setUrl, headers, setHeaders, body, setBody }) => {
-  // const [url, setUrl] = useState("");
-  // const [headers, setHeaders] = useState([{ key: "", value: "", isCustom: true, showSuggestions: false, showValueSuggestions: false }]);
-  // const [body, setBody] = useState("");
 
   // Initialize form with initialData
   useEffect(() => {

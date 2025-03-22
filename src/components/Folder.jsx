@@ -120,7 +120,7 @@ const Folder = ({
         onChange={(e) => setInputState({ ...inputState, value: e.target.value })}
         onKeyDown={handleInputConfirm}
         placeholder={type === "request" ? "请求名称" : "新名称"}
-        className="w-full p-2 bg-melad-200 text-melad-700 rounded-md focus:outline-none"
+        className="w-full p-2 bg-melad-100 border border-melad-200 text-melad-700 rounded-md focus:outline-none"
         autoFocus
       />
     </motion.div>

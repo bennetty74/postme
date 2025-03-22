@@ -180,7 +180,7 @@ const HistoryPanel = ({ history, onSelectRequest, onAddFolder, onAddRequest, onU
             ? "请输入名称"
             : "请输入名称"
         }
-        className="w-full p-2 bg-melad-200 text-melad-700 rounded-md focus:outline-none"
+        className="w-full p-2 bg-melad-100 border border-melad-200 text-melad-700 rounded-md focus:outline-none"
         autoFocus
       />
     </motion.div>

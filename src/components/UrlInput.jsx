@@ -8,8 +8,8 @@ const UrlInput = ({ url, setUrl, handleSend, isSending }) => (
       value={url}
       onChange={(e) => setUrl(e.target.value)}
       placeholder="输入请求URL"
-      className="flex-1 p-2 bg-melad-200 text-melad-700 rounded-md focus:outline-none"
-      disabled={isSending} // 发送时禁用输入框
+      className="flex-1 p-2 bg-melad-100 border border-melad-200 text-melad-700 rounded-md focus:outline-none"
+      disabled={isSending} 
     />
 
 
@@ -18,7 +18,7 @@ const UrlInput = ({ url, setUrl, handleSend, isSending }) => (
       whileTap={{ scale: 0.95 }}
       onClick={handleSend}
       className={`p-2  px-4 rounded-md transition flex items-center justify-center ${
-        isSending ? "bg-melad-300 cursor-not-allowed" : "bg-melad-500 text-white"
+        isSending ? "text-white bg-melad-300 cursor-not-allowed" : "bg-melad-500 text-white"
       }`}
       disabled={isSending} // 发送时禁用按钮
     >

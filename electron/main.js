@@ -14,6 +14,9 @@ function createWindow() {
       contextIsolation: true,
       preload: path.join(__dirname, "preload.js"),
     },
+    icon: process.platform === "linux" 
+      ? path.join(__dirname, "../build/icons/png/256x256.png") // Linux 图标
+      : undefined,
   });
 
   if (process.env.NODE_ENV === "dev") {

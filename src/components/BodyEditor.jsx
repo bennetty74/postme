@@ -84,7 +84,7 @@ const BodyEditor = ({ method, body, setBody }) => {
           showLineNumbers: false,
         }}
         placeholder="输入请求体"
-        className="rounded-md bg-melad-200 text-melad-700"
+        className="border border-melad-200  rounded-md bg-melad-100 text-melad-700"
         editorProps={{ $blockScrolling: true }}
         ref={editorRef}
       />

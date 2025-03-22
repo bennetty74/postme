@@ -13,7 +13,7 @@ const HeaderEditor = ({
   getKeySuggestions,
   getValueSuggestions,
 }) => (
-  <div className="mb-4">
+  <div className="mb-2">
     <div className="flex justify-between items-center mb-2">
       <h3 className="text-lg font-semibold text-melad-700">请求头</h3>
       <motion.button

@@ -15,5 +15,19 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    // require("@tailwindcss/typography"),
+    function ({ addUtilities }) {
+      addUtilities({
+        ".scrollbar-hide": {
+          /* Firefox */
+          "scrollbar-width": "none",
+          /* Safari and Chrome */
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
+        },
+      });
+    },
+  ],
 };
